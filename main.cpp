@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -216,7 +217,28 @@ class Coffeeshop {
 
     public: 
     void getnames() {
-        ifstream
+        ifstream fin;
+        string name;
+        fin.open("names.txt");
+
+        if(!fin){
+            cout << "Error. Can't open file\n";
+            return;
+        }
+
+        if (fin.good()) {
+            while(getline(fin, name)){
+                names.push_back(name);
+            }
+        }
+        fin.close();
+
+    }
+
+    void storeopen() {
+        for (int i = 0; i < 5; i++){
+            customerline.push_back(names[i]);
+        }
     }
 };
 
