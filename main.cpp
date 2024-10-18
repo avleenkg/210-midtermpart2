@@ -238,9 +238,15 @@ int main() {
     cout << "Resulting line:\n";
     line.print();
 
+    int prob = rand() % 100+1;
     //timesteps max 20
     for (int j = 1; j < 21; j++){
         cout << "Timestep #" << j+1 << ":\n";
+        if (prob < 40) {
+            string cus = line.front(); //find name of first customer
+            cout << "\t" << cus << " is served.\n";
+            line.pop_front(); //remove first in line they are served
+        }
     }
     
     return 0;
