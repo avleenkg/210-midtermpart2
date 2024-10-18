@@ -240,7 +240,9 @@ class Coffeeshop {
             customerline.push_back(names[i]);
             cout << names[i] << " joined the line.\n";
         }
-        //print the line with initial customers
+    }
+
+    void printline() {
         customerline.print();
     }
 };
@@ -250,9 +252,10 @@ int main() {
     Coffeeshop shop;
 
     cout << "The store is opening!\n";
+    shop.getnames();
     shop.storeopen();
-
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    //print the line with initial customers
+    shop.printline();
 
     
     return 0;
