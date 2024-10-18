@@ -2,6 +2,9 @@
 // use demo code to simulate a line at coffee shop
 
 #include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <string>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -206,7 +209,20 @@ public:
     }
 };
 
+class Coffeeshop {
+    private:
+    DoublyLinkedList customerline;
+    vector<string> names;
+
+    public: 
+    void getnames() {
+        ifstream
+    }
+};
+
 int main() {
+    srand(time(0));
+
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
     
