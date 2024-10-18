@@ -8,7 +8,6 @@
 #include <vector>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
 class DoublyLinkedList {
 private:
@@ -250,15 +249,13 @@ int main() {
     line.print();
 
     //timesteps max 20
-    for (int j = 1; j < 21; j++){
+    for (int j = 1; j < 20; j++){
         int prob = rand() % 100+1;
         cout << "Timestep #" << j+1 << ":\n";
         if (prob < 40) {
             string cus = line.front(); //find name of first customer
             cout << "\t" << cus << " is served.\n";
             line.pop_front(); //remove first in line they are served
-            cout << "Resulting line:\n";
-            line.print();
         }
 
         if(prob < 60) {
@@ -266,16 +263,12 @@ int main() {
             string rand_name = names[random];
             line.push_back(rand_name);
             cout << "\t" << rand_name << " joins the line.\n";
-            cout << "Resulting line:\n";
-            line.print();
         }
 
         if(prob < 20) {
             string cus = line.back(); //find name of last
             line.pop_back(); //last customer in line leaves
             cout << "\t" << cus << " exits rear of line.\n";
-            cout << "Resulting line:\n";
-            line.print();
         }
 
         if (prob < 10) { //random customer leaves
@@ -283,8 +276,6 @@ int main() {
             string rand_name = names[random];
             line.delete_val(rand_name);
             cout << "\t" << rand_name << " leaves the line.\n";
-            cout << "Resulting line:\n";
-            line.print();
         }
 
         if (prob < 10) { //VIP gets added to front
@@ -292,9 +283,10 @@ int main() {
             string rand_name = names[random];
             line.push_front(rand_name);
             cout << "\t" << rand_name << " (VIP) joines the front of the line.\n";
-            cout << "Resulting line:\n";
-            line.print();
         }
+        
+        cout << "Resulting line:\n";
+        line.print();
     }   
     
     return 0;
