@@ -13,11 +13,11 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 class DoublyLinkedList {
 private:
     struct Node {
-        string data;
+        string name;
         Node* prev;
         Node* next;
         Node(string val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
+            name = val; 
             prev = p;
             next = n;
         }
@@ -65,7 +65,7 @@ public:
 
         Node* temp = head;
         
-        while (temp && temp->data != value)
+        while (temp && temp->name != value)
             temp = temp->next;
 
         if (!temp) return; 
@@ -190,7 +190,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->next;
         }
         cout << endl;
@@ -203,59 +203,31 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->prev;
         }
         cout << endl;
     }
 };
 
-class Coffeeshop {
-    private:
-    DoublyLinkedList customerline;
-    vector<string> names;
-
-    public: 
-    void getnames() {
-        ifstream fin;
-        string name;
-        fin.open("names.txt");
-
-        if(!fin){
-            cout << "Error. Can't open file\n";
-            return;
-        }
-
-        if (fin.good()) {
-            while(getline(fin, name)){
-                names.push_back(name);
-            }
-        }
-        fin.close();
-
-    }
-
-    void storeopen() {
-        for (int i = 0; i < 5; i++){
-            customerline.push_back(names[i]);
-            cout << names[i] << " joined the line.\n";
-        }
-    }
-
-    void printline() {
-        customerline.print();
-    }
-};
-
 int main() {
     srand(time(0));
-    Coffeeshop shop;
 
-    cout << "The store is opening!\n";
-    shop.getnames();
-    shop.storeopen();
-    //print the line with initial customers
-    shop.printline();
+    DoublyLinkedList line;
+    vector<string> names;
+    ifstream fin;
+    fin.open("names.txt");
+    if (!fin){
+        cout << "Error. Cannot open file.\n";
+    }
+
+    if(fin.good()){
+        string name;
+        while (fin >> name) {
+            names.push_back(name);
+        }
+    }
+    fin.close();
 
     
     return 0;
