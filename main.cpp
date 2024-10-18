@@ -207,6 +207,17 @@ public:
         }
         cout << endl;
     }
+
+    string front() {
+        Node* current = head;
+        string frontn = current->name;
+        return frontn;
+    }
+    string back() {
+        Node* current = tail;
+        string backn = current->name;
+        return backn;
+    }
 };
 
 int main() {
@@ -246,6 +257,32 @@ int main() {
             string cus = line.front(); //find name of first customer
             cout << "\t" << cus << " is served.\n";
             line.pop_front(); //remove first in line they are served
+            cout << "Resulting line:\n";
+            line.print();
+        }
+
+        if(prob < 60) {
+            int random = rand() % names.size();
+            string rand_name = names[random];
+            line.push_back(rand_name);
+            cout << "\t" << rand_name << " joins the line.\n";
+            cout << "Resulting line:\n";
+            line.print();
+        }
+
+        if(prob < 20) {
+            string cus = line.back(); //find name of last
+            line.pop_back(); //last customer in line leaves
+            cout << "\t" << cus << " exits rear of line.\n";
+            cout << "Resulting line:\n";
+            line.print();
+        }
+
+        if (prob < 10) { //random customer leaves
+            int random = rand() % names.size();
+            string rand_name = names[random];
+            line.delete_val(rand_name);
+            cout << ""
         }
     }
     
