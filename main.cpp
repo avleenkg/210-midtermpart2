@@ -249,9 +249,9 @@ int main() {
     cout << "Resulting line:\n";
     line.print();
 
-    int prob = rand() % 100+1;
     //timesteps max 20
     for (int j = 1; j < 21; j++){
+        int prob = rand() % 100+1;
         cout << "Timestep #" << j+1 << ":\n";
         if (prob < 40) {
             string cus = line.front(); //find name of first customer
@@ -282,9 +282,20 @@ int main() {
             int random = rand() % names.size();
             string rand_name = names[random];
             line.delete_val(rand_name);
-            cout << ""
+            cout << "\t" << rand_name << " leaves the line.\n";
+            cout << "Resulting line:\n";
+            line.print();
         }
-    }
+
+        if (prob < 10) { //VIP gets added to front
+            int random = rand() % names.size();
+            string rand_name = names[random];
+            line.push_front(rand_name);
+            cout << "\t" << rand_name << " (VIP) joines the front of the line.\n";
+            cout << "Resulting line:\n";
+            line.print();
+        }
+    }   
     
     return 0;
 }
