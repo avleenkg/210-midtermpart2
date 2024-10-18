@@ -190,10 +190,9 @@ public:
             return;
         }
         while (current) {
-            cout << current->name << " ";
+            cout << "\t" << current->name << "\n";
             current = current->next;
         }
-        cout << endl;
     }
 
     void print_reverse() {
@@ -203,7 +202,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->name << " ";
+            cout << current->name << "\n";
             current = current->prev;
         }
         cout << endl;
@@ -220,15 +219,29 @@ int main() {
     if (!fin){
         cout << "Error. Cannot open file.\n";
     }
-
+    
+    string name;
     if(fin.good()){
-        string name;
         while (fin >> name) {
             names.push_back(name);
         }
     }
     fin.close();
 
+    cout << "Store opens:\n";
+    for(int i = 0; i < 5; i++) {
+        int random = rand() % names.size();
+        string rand_name = names[random];
+        line.push_back(rand_name);
+        cout << "\t" << rand_name << " joins the line.\n";
+    }
+    cout << "Resulting line:\n";
+    line.print();
+
+    //timesteps max 20
+    for (int j = 1; j < 21; j++){
+        cout << "Timestep #" << j+1 << ":\n";
+    }
     
     return 0;
 }
